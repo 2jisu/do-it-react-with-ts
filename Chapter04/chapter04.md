@@ -259,8 +259,19 @@
 ### 🔍 useRef와 useImperativeHandle 훅 이해하기
 
 - #### ref 속성이란?
+
   모든 리액트 컴포넌트는 reference의 앞 3글자를 딴 ref 속성을 제공합니다.그런데 ref 속성값은 사용자 코드에서 설정하는 것이 아니라 어떤 시점에 리액트 내부에서 설정해 줍니다.  
   ref 속성은 초기에는 null이었다가 마운트되는 시점에서 물리 DOM 객체의 값이 됩니다. 즉, ref는 물리 DOM 객체의 참조입니다.
+
+- #### useRef 훅 알아보기
+
+- #### forwardRef 함수 이해하기
+
+  forwardRef 함수는 부모 컴포넌트에서 생성한 ref를 자식 컴포넌트로 전달해주는 역할을 합니다.
+
+- #### useImperativeHandle 훅이란?
+  useImperativeHandle의 첫 번째 매개변수는 forwardRef 함수를 호출해 얻은 ref를 사용해야 합니다.
+  이는 useImperativeHandle 훅은 다른 훅과 달리 컴포넌트 내부에서만 사용해야 한다는 것을 의미합니다.
 
 ### 🔍 useContext 훅 이해하기
 
