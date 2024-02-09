@@ -1,8 +1,13 @@
-export default function CopyMe() {
+import {Outlet} from 'react-router-dom'
+import NavigationBar from './NavigationBar'
+import Footer from './Footer'
+
+export default function Layout() {
   return (
-    <section className="mt-4">
-      <h2 className="font-bold text-5xl text-center">CopyMe</h2>
-      <div className="mt-4"></div>
-    </section>
+    <>
+      <NavigationBar />
+      <Outlet />
+      <Footer />
+    </>
   )
 }

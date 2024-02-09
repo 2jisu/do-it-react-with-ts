@@ -1,8 +1,11 @@
-export default function CopyMe() {
+import Hero from './Hero'
+import Promotion from './Promotion'
+
+export default function LandingPage() {
   return (
     <section className="mt-4">
-      <h2 className="font-bold text-5xl text-center">CopyMe</h2>
-      <div className="mt-4"></div>
+      <Hero />
+      <Promotion />
     </section>
   )
 }
