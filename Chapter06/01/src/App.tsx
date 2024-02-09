@@ -5,8 +5,6 @@ import {BrowserRouter} from 'react-router-dom'
 import RouteSetup from './routes/RouteSetup'
 import {useStore} from './store'
 
-import Board from './pages/Board'
-
 export default function App() {
   const store = useStore()
   return (
