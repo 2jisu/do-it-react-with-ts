@@ -1,8 +1,8 @@
 import {useToggle} from '../hooks'
 import * as D from '../data'
 import * as R from '../store/remoteUser'
-import {useCallback, useState} from 'react'
-import {Avatar, Icon, Title} from '../components'
+import {useCallback, useEffect, useState} from 'react'
+import {Avatar, Title} from '../components'
 import {useDispatch, useSelector} from 'react-redux'
 import type {AppState} from '../store'
 import {Button} from '../theme/daisyui'
@@ -11,7 +11,6 @@ export default function FetchTest() {
   const dispath = useDispatch()
   const user = useSelector<AppState, R.State>(({remoteUser}) => remoteUser)
   const [loading, toggleLoading] = useToggle()
-  const [randomUser, setRandomUser] = useState<D.IRandomUser | null>(null)
   const [error, setError] = useState<Error | null>(null)
 
   const getRemoteUser = useCallback(() => {
@@ -28,17 +27,16 @@ export default function FetchTest() {
       .catch(setError)
       .finally(toggleLoading)
   }, [dispath, toggleLoading])
-  const changeEmail = useCallback(() => {
-    toggleLoading()
-    D.fetchRandomUser()
-      .then(user => dispath(R.changeEmail(D.randomEmail())))
-      .catch(setError)
-      .finally(toggleLoading)
-  }, [dispath])
+  const changeEmail = useCallback(
+    () => dispath(R.changeEmail(D.randomEmail())),
+    [dispath]
+  )
   const changePicture = useCallback(
     () => dispath(R.changePicture({large: D.randomAvatar()})),
     [dispath]
   )
+
+  useEffect(getRemoteUser, [getRemoteUser])
 
   return (
     <section className="mt-4">
